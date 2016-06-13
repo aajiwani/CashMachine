@@ -7,10 +7,14 @@
  * Time: 11:46 PM
  */
 
+namespace AppCode\NoteBox;
+
+use AppCode\Note\FiftyNote;
+
 class FiftyNoteBox extends AbstractNoteBox
 {
-    protected function getNoteAmount()
+    public function GetNote()
     {
-        return 50;
+        return new FiftyNote();
     }
 }

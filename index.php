@@ -8,43 +8,39 @@
 
 require_once ('vendor/autoload.php');
 
-$cashMachine = new CashMachine();
+$cashMachine = new \AppCode\Client\CashMachine();
 
-echo "Entry: 30";
-echo "Result: " . print_r($cashMachine->WithdrawCash(30));
+$r1 = new \AppCode\InputOutput\CashMachineRequest(30);
+$r2 = new \AppCode\InputOutput\CashMachineRequest(80);
+$r3 = new \AppCode\InputOutput\CashMachineRequest(125);
+$r4 = new \AppCode\InputOutput\CashMachineRequest(-130);
+$r5 = new \AppCode\InputOutput\CashMachineRequest(NULL);
 
-echo "Entry: 80";
-echo "Result: " . print_r($cashMachine->WithdrawCash(80));
+echo "Entry: " . $r1->GetAmount();
+echo "Result: " . print_r($cashMachine->WithdrawCash($r1));
 
-try
-{
-    echo "Entry: 125";
-    $cashMachine->WithdrawCash(125);
-}
-catch (Exception $e)
-{
-    echo "Result: throw NoteUnavailableException";
-}
+echo "Entry: " . $r2->GetAmount();
+echo "Result: " . print_r($cashMachine->WithdrawCash($r2));
 
 try
 {
-    echo "Entry: -130";
-    $cashMachine->WithdrawCash(-130);
+    echo "Entry: " . $r3->GetAmount();
+    $cashMachine->WithdrawCash($r3);
 }
 catch (Exception $e)
 {
-    echo "Result: throw NoteUnavailableException";
+    echo "Result: throw " . get_class($e);
 }
 
 try
 {
-    echo "Entry: -130";
-    $cashMachine->WithdrawCash(-130);
+    echo "Entry: " . $r4->GetAmount();
+    $cashMachine->WithdrawCash($r4);
 }
 catch (Exception $e)
 {
-    echo "Result: throw NoteUnavailableException";
+    echo "Result: throw " . get_class($e);
 }
 
 echo "Entry: NULL";
-echo "Result: " . print_r($cashMachine->WithdrawCash(NULL));
+echo "Result: " . print_r($cashMachine->WithdrawCash($r5));

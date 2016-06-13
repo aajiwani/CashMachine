@@ -7,7 +7,9 @@
  * Time: 12:05 AM
  */
 
-class NoteUnavailableException extends Exception
+namespace AppCode\Exception;
+
+class NoteUnavailableException extends \Exception
 {
     // Redefine the exception so message isn't optional
     public function __construct($message, $code = 0, Exception $previous = null) {

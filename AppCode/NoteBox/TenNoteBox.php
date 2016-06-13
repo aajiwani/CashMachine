@@ -7,10 +7,14 @@
  * Time: 11:46 PM
  */
 
+namespace AppCode\NoteBox;
+
+use AppCode\Note\TenNote;
+
 class TenNoteBox extends AbstractNoteBox
 {
-    protected function getNoteAmount()
+    public function GetNote()
     {
-        return 10;
+        return new TenNote();
     }
 }
